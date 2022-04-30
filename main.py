@@ -96,7 +96,7 @@ def main():
             if event.type == QUIT:
                 pygame.quit()
                 return
-            elif event.type == MOUSEBUTTONDOWN:
+            elif event.type == MOUSEBUTTONDOWN and event.button == 1:
                 button = buttons.clicked(all_buttons, event.pos)
                 if button is not None:
                     button.click()
