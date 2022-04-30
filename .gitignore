@@ -1,2 +1,5 @@
 logs/
 __pycache__/
+.replit
+pyproject.toml
+poetry.lock
