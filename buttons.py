@@ -2,21 +2,23 @@ import pygame
 
 
 class Button:
-    def __init__(self, name=None, sprite=None, size=(10,10), color=None,
+    def __init__(self, name=None, sprite=None, size=None, color=None,
             func=None, click_args=None, click_kwargs=None, **kwargs):
         if sprite is not None:
             self.sprite = pygame.image.load(sprite)
             if sprite.endswith(".png"):
                 self.sprite = self.sprite.convert_alpha()
+            if size is None:
+                size = self.sprite.get_size()
             self.sprite = pygame.transform.scale(self.sprite, size)
         else:
             self.sprite = pygame.Surface(size)
             if color is not None:
                 self.sprite.fill(color)
 
+        self.rect = self.sprite.get_rect()
         self.name = name
         self.color = color
-        self.rect = self.sprite.get_rect()
         self.func = func
         self.args = click_args
         self.kwargs = click_kwargs
@@ -39,6 +41,8 @@ class Button:
 
 
 def clicked(button_list, point) -> int:
+    if type(button_list) == Button:  # Allows user to pass either one button or a list
+        button_list = [button_list]
     for button in button_list:
         if button.rect.collidepoint(point):
             return button
