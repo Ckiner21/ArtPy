@@ -26,7 +26,7 @@ SCR_WIDTH = SCR_HEIGHT = 600
 BP_WIDTH = SCR_WIDTH
 BP_HEIGHT = SCR_HEIGHT//5
 screen = pygame.display.set_mode(size=(SCR_WIDTH, SCR_HEIGHT))
-pygame.display.set_caption("ArtPy by Christian Kiner")
+pygame.display.set_caption("ArtPy")
 icon = pygame.image.load("Sprites/icon.png").convert_alpha()
 pygame.display.set_icon(icon)
 button_panel = pygame.Rect((0, SCR_HEIGHT-BP_HEIGHT), (BP_WIDTH, BP_HEIGHT))
